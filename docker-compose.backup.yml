@@ -1,0 +1,21 @@
+#automatig docker run/build command because we may have multiple container and it would be headach to run itni sari commands
+
+version: "3" #version of docker compose we gonna use
+
+#specifying all of container we wanna create and each container refer as service
+services:
+  node-app: #name of container/service
+    build: . #image from which we gonna biuld container we have docker file in our current dir o we put dot
+    ports: 
+      - "3000:3000" #dash "-" represent list wen can open  many ports of list
+    volumes:
+      - ./:/app #syncing files //bind monut volume
+      - /app/node_modules #prevent touching node modules //anonymose volume
+    environment: #setting env variables
+      - PORT=3000 #for single varbaile
+
+      # env_file:  #lading from file
+      #   - ./.env
+
+
+    
